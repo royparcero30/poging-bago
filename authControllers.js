@@ -1,8 +1,8 @@
 const pool = require('../config/database');
-const brypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const register =async (re, res) => {
+const register =async (req, res) => {
     const { fullname, username, password } = req.body;
  
     try {
@@ -32,7 +32,7 @@ const login = async (req, res) => {
             return res.status(400).json({ error: 'Invalid Credentials' });
         }
 
-        const token = jwt.sign({ user_id: user_id, username: user.username }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_ACCESS_EXPIRATION_TIME });
+        const token = jwt.sign({ user_id: user.user_id, username: user.username }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_ACCESS_EXPIRATION_TIME });
 
         res.json({ token });
 

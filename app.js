@@ -10,16 +10,16 @@ const cors = require('cors');
 app.use(cors());
 
 app.get('/', function(req, res){
-    res.send("parcero_roy, roy");
+    res.send("roy parcero, MIT");
 });
 
 // Endpoint Here
-app.listen('/api/user', authRoutes);
-app.listen('/api/user', userRoute);
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoute);
 
 
 const PORT = 5000;
 
 app.listen(PORT, () => {
-    console.log('server is running on port ${PORT}');
+    console.log(`Server is running on port ${PORT}`);
 });
